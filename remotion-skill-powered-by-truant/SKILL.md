@@ -3,10 +3,15 @@ name: remotion-best-practices
 description: >
   Complete Remotion skill: 37 API rules, professional social media templates, 5 themes,
   ready-to-use components (animations, effects, text, transitions), and a team of 4
-  specialized agents. Use when creating videos with Remotion, designing social media
-  content (posts/reels), adding animations or effects, choosing themes, or any Remotion work.
+  specialized agents. Use when: creating new video templates (posts/reels), adding animations
+  or effects, composing scenes, choosing themes, rendering videos, extending the template
+  library, or any work involving Remotion code. Triggers on: "video per social", "crea un reel",
+  "crea un video", "template post", "animazione remotion", "video Instagram", "video TikTok",
+  "video Facebook", "crea uno short", "video YouTube Shorts", "reel", "post animato",
+  "video promozionale", "remotion", "crea una storia", "story Instagram", "video per i social",
+  "video prodotto", "video annuncio", references to post/reel templates, or any Remotion work.
 metadata:
-  tags: remotion, video, react, animation, composition, social-media, templates
+  tags: remotion, video, react, animation, composition, social-media, templates, reel, post, tiktok, instagram, shorts
 ---
 
 ## When to use
