@@ -18,13 +18,30 @@ metadata:
 
 Use this skill whenever you are dealing with Remotion code to obtain the domain-specific knowledge.
 
-## IMPORTANT: Parallel Agent Workflow (MANDATORY for video creation)
+## IMPORTANT: Team Activation (MANDATORY for video creation)
 
-**When the user requests to create a video**, you MUST use the **Agent tool** to spawn specialized subagents that work in parallel. Do NOT write all the code yourself sequentially.
+**When the user requests to create a video**, you MUST spawn a specialized team BEFORE writing any code. Do NOT write all the code yourself sequentially.
 
-### How to spawn agents
+### Method 1: TeamCreate (recommended - requires Agent Teams enabled)
 
-Use the `Agent` tool (available in every Claude Code installation) to launch **parallel subagents**. Send a single message with multiple Agent tool calls:
+If the `TeamCreate` tool is available, use it to spawn the full coordinated team:
+
+1. Use `TeamCreate` with `team_name: "remotion-pro-studio"` to create the team
+2. The **team-lead** coordinates the work, assigning tasks to:
+   - **animation-architect** for springs, easings, transitions
+   - **template-builder** for template structure, layouts, scenes
+   - **visual-effects** for effects, themes, text animations
+3. Team config is at `team/config.json` in this skill
+
+**How to enable Agent Teams** (one-time setup):
+```bash
+claude config set -g env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 1
+```
+Then restart Claude Code. This unlocks `TeamCreate`, `TaskCreate`, `SendMessage` and the full team coordination system.
+
+### Method 2: Agent tool (fallback - works everywhere)
+
+If `TeamCreate` is NOT available, use the `Agent` tool to launch **parallel subagents**. Send a single message with multiple Agent tool calls:
 
 ```
 Agent 1 - "Build template structure"
@@ -44,11 +61,12 @@ Agent 3 - "Build visual effects and theme"
 ```
 
 ### Rules
+- **Prefer TeamCreate** when available (better coordination, task tracking, message passing)
+- **Fall back to Agent tool** if TeamCreate is not found
 - **Always launch agents in parallel** (multiple Agent calls in one message) for independent tasks
 - Each agent gets the full context: video requirements, format, theme, asset paths
 - After agents complete, **review and integrate** their outputs, resolving any conflicts
 - For simple videos (single scene, no effects), you may skip agents and code directly
-- The `team/config.json` file in this skill contains reference prompts for each agent role
 
 ## Asset Acquisition (AUTHORIZED)
 
@@ -529,4 +547,5 @@ Detailed documentation for the Pro Studio components and workflows:
 | **template-builder** | Sviluppatore | Template posts/reels, layout, scene system, Zod schemas |
 | **visual-effects** | VFX specialist | Effetti (grain, particles, glow), temi, text animations, icone |
 
-Il team viene attivato automaticamente tramite il tool **Agent** quando si crea un video (vedi sezione "Parallel Agent Workflow" sopra).
+Il team viene attivato automaticamente quando si crea un video (vedi sezione "Team Activation" sopra).
+Per la migliore esperienza, abilita Agent Teams: `claude config set -g env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 1`

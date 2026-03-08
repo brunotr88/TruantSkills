@@ -103,13 +103,19 @@ Se usi Windows, ti consiglio di lavorare con WSL (Windows Subsystem for Linux). 
    cp -r TruantSkills/remotion-skill-powered-by-truant ~/.agents/skills/remotion-best-practices
    ```
 
-3. **Installa il team di agenti** (opzionale ma consigliato):
+3. **Abilita Agent Teams** (consigliato - attiva il sistema di team collaborativo):
+   ```bash
+   claude config set -g env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 1
+   ```
+   Poi riavvia Claude Code.
+
+4. **Installa il team di agenti**:
    ```bash
    mkdir -p ~/.claude/teams/remotion-pro-studio
    cp TruantSkills/remotion-skill-powered-by-truant/team/config.json ~/.claude/teams/remotion-pro-studio/config.json
    ```
 
-4. **Fatto!** La skill si attivera automaticamente quando lavori su un progetto Remotion.
+5. **Fatto!** La skill si attivera automaticamente quando lavori su un progetto Remotion.
 
 ### Creare un nuovo progetto Remotion (se non ne hai uno)
 

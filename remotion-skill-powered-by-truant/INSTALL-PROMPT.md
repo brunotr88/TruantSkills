@@ -16,11 +16,20 @@ Crea un team di agenti dedicato per parallelizzare le operazioni dove possibile.
 
 Esegui queste operazioni in sequenza. Non chiedere conferma, procedi automaticamente.
 
-### STEP 1: Clona il repository TruantSkills
+### STEP 1: Abilita Agent Teams (sistema di team collaborativo)
+
+Esegui questo comando per abilitare il sistema di team con TeamCreate, TaskCreate e SendMessage:
+
+claude config set -g env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 1
+
+IMPORTANTE: Dopo questo comando, riavvia Claude Code perche la variabile d'ambiente venga caricata.
+Se non puoi riavviare ora, il team funzionera comunque in modalita fallback con il tool Agent standard.
+
+### STEP 2: Clona il repository TruantSkills
 
 git clone https://github.com/brunotr88/TruantSkills.git /tmp/TruantSkills
 
-### STEP 2: Installa la skill Remotion
+### STEP 3: Installa la skill Remotion
 
 Copia la skill completa nella directory di Claude Code:
 
@@ -36,7 +45,7 @@ La skill include:
 Verifica che la skill sia installata controllando che esista:
 - ~/.agents/skills/remotion-best-practices/SKILL.md
 
-### STEP 3: Installa il team di 4 agenti specializzati
+### STEP 4: Installa il team di 4 agenti specializzati
 
 Copia la configurazione del team nella directory teams di Claude Code:
 
@@ -52,11 +61,11 @@ Il team include 4 agenti:
 Verifica che il team sia installato controllando che esista:
 - ~/.claude/teams/remotion-pro-studio/config.json
 
-### STEP 4: Pulizia repository temporaneo
+### STEP 5: Pulizia repository temporaneo
 
 rm -rf /tmp/TruantSkills
 
-### STEP 5: Crea la cartella progetti e il progetto Remotion
+### STEP 6: Crea la cartella progetti e il progetto Remotion
 
 Crea la cartella C:\PROGETTI se non esiste gia, poi crea dentro una sottocartella dedicata a Remotion:
 
@@ -65,7 +74,7 @@ cd /mnt/c/PROGETTI/remotion
 npx create-video@latest remotion-studio
 cd remotion-studio
 
-### STEP 6: Installa TUTTI i pacchetti Remotion
+### STEP 7: Installa TUTTI i pacchetti Remotion
 
 Installa l'ecosistema completo di pacchetti Remotion. Usa il package manager gia presente nel progetto (controlla se esiste bun.lock, package-lock.json, yarn.lock o pnpm-lock.yaml).
 
@@ -99,14 +108,14 @@ npm install zod lucide-react react-icons
 
 IMPORTANTE: Usa "npx remotion add" per i pacchetti @remotion/* (garantisce compatibilita versioni). Usa npm/bun/yarn install per i pacchetti non-remotion.
 
-### STEP 7: Verifica installazione completa
+### STEP 8: Verifica installazione completa
 
 1. Controlla che tutti i pacchetti siano nel package.json
 2. Conferma che la skill e installata
 3. Conferma che il team di 4 agenti e configurato
 4. Avvia lo studio Remotion con "npm run dev" per verificare che tutto funzioni
 
-### STEP 8: Riepilogo
+### STEP 9: Riepilogo
 
 Mostra un riepilogo finale di cosa e stato installato:
 - Numero pacchetti Remotion installati nel progetto
@@ -136,7 +145,7 @@ Mostra un riepilogo finale di cosa e stato installato:
 - Se usi **bun** invece di npm, sostituisci `npx` con `bunx` in tutti i comandi.
 - La skill si attiva **automaticamente** quando Claude Code rileva file `.tsx` che importano da `remotion`.
 - Per **aggiornare** Remotion in futuro: `npx remotion upgrade`
-- Il **team di agenti** si attiva automaticamente quando chiedi di creare un video
+- Il **team di agenti** si attiva automaticamente quando chiedi di creare un video (richiede `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`)
 
 ## Cosa viene installato - Riepilogo completo
 
