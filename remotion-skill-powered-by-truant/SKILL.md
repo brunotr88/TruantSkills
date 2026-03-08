@@ -1,13 +1,61 @@
 ---
 name: remotion-best-practices
-description: Best practices for Remotion - Video creation in React
+description: >
+  Complete Remotion skill: 37 API rules, professional social media templates, 5 themes,
+  ready-to-use components (animations, effects, text, transitions), and a team of 4
+  specialized agents. Use when creating videos with Remotion, designing social media
+  content (posts/reels), adding animations or effects, choosing themes, or any Remotion work.
 metadata:
-  tags: remotion, video, react, animation, composition
+  tags: remotion, video, react, animation, composition, social-media, templates
 ---
 
 ## When to use
 
-Use this skills whenever you are dealing with Remotion code to obtain the domain-specific knowledge.
+Use this skill whenever you are dealing with Remotion code to obtain the domain-specific knowledge.
+
+## IMPORTANT: Team Activation (MANDATORY for video creation)
+
+**When the user requests to create a video**, you MUST start the specialized agent team BEFORE writing any code:
+
+1. Use `TeamCreate` with `team_name: "remotion-pro-studio"` to spawn the 4-agent team
+2. The **team-lead** will coordinate the work, assigning tasks to:
+   - **animation-architect** for springs, easings, transitions
+   - **template-builder** for template structure, layouts, scenes
+   - **visual-effects** for effects, themes, text animations
+3. Only after the team is active, proceed with the Decision Engine below
+
+This is a **blocking requirement**: do not generate video code alone when the team is available. The team produces higher quality, more consistent output by parallelizing the work.
+
+---
+
+## Domande da fare all'utente prima di creare il video
+
+**PRIMA di iniziare a codificare**, poni queste domande all'utente per raccogliere tutti i requisiti. Non procedere finche non hai le risposte essenziali (contrassegnate con *).
+
+### Checklist obbligatoria
+
+| # | Domanda | Opzioni comuni | Default |
+|---|---------|----------------|---------|
+| 1* | **Formato e piattaforma** - Per quale social e in che formato? | Instagram Post (4:3, 4:5, 1:1), Reel/Story/TikTok/Shorts (9:16) | Post 4:5 |
+| 2* | **Tipo di contenuto** - Cosa vuoi comunicare? | Prodotto, annuncio, testimonial, tutorial, countdown, carosello, quote | - |
+| 3* | **Testi principali** - Titolo, sottotitolo, CTA, body text? | Forniti dall'utente | - |
+| 4* | **Lingua dei testi** | Italiano, inglese, altro | Italiano |
+| 5 | **Brand/Tema** - Hai colori e font specifici o scelgo un tema? | default, luxury, modern, vibrant, minimal, custom | default |
+| 6 | **Immagini/Video** - Hai asset da includere? | Path locali, URL, "non ho immagini" | Nessuno |
+| 7 | **Logo** - Vuoi inserire un logo? | Path file, URL, "no" | No |
+| 8 | **Durata** - Quanto deve durare il video? | 5s, 10s, 15s, 30s, 60s | 10s post, 15s reel |
+| 9 | **Musica/Audio** - Vuoi una traccia audio o effetti sonori? | Path file, "musica di sottofondo", "solo sfx", "no" | No |
+| 10 | **CTA** - Quale azione vuoi che faccia chi guarda? | "Scopri di piu", "Acquista ora", "Link in bio", custom | - |
+| 11 | **Stile animazione** - Preferenze sullo stile? | Elegante, energetico, minimale, cinematografico | Adeguato al tema |
+
+### Regole
+
+- Le domande 1-4 sono **bloccanti**: non iniziare senza risposta
+- Le domande 5-11 hanno default ragionevoli: se l'utente non risponde, usa i default
+- Se l'utente fornisce gia tutte le info nel prompt iniziale, non ripetere le domande
+- Adatta il tono delle domande al contesto (informale se il dialogo e informale)
+
+---
 
 ## Instagram Reels Safe Zones (MANDATORY for 9:16)
 
@@ -207,7 +255,7 @@ When needing to visualize audio (spectrum bars, waveforms, bass-reactive effects
 
 When needing to use sound effects, load the [./rules/sfx.md](./rules/sfx.md) file for more information.
 
-## How to use
+## How to use - Rules (37 regole Remotion)
 
 Read individual rule files for detailed explanations and code examples:
 
@@ -244,3 +292,171 @@ Read individual rule files for detailed explanations and code examples:
 - [rules/voiceover.md](rules/voiceover.md) - Adding AI-generated voiceover to Remotion compositions using ElevenLabs TTS
 - [rules/parameters.md](rules/parameters.md) - Make a video parametrizable by adding a Zod schema
 - [rules/maps.md](rules/maps.md) - Add a map using Mapbox and animate it
+
+---
+
+## Pro Studio - Decision Engine
+
+When the user requests a video, reason through these steps IN ORDER:
+
+### 1. Choose Format
+
+| Request | Format | Size |
+|---------|--------|------|
+| Post Instagram/Facebook standard | `FORMATS.POST_4_3` | 1080x810 |
+| Post Instagram feed tall | `FORMATS.POST_4_5` | 1080x1350 |
+| Post square | `FORMATS.POST_1_1` | 1080x1080 |
+| Reel / Story / TikTok / Shorts | `FORMATS.REEL_9_16` | 1080x1920 |
+| "non so" / generico post | `FORMATS.POST_4_5` | best engagement |
+| "non so" / generico reel | `FORMATS.REEL_9_16` | only option |
+
+### 2. Choose or Create Template
+
+**Use existing template when possible:**
+
+| Need | Template | Key Props |
+|------|----------|-----------|
+| Multi-image showcase | `PostCarousel` | slides[], ctaText |
+| Quote / testimonial (post) | `PostQuote` | quote, author, authorRole |
+| Product with image + price | `PostProduct` | productImage, productName, price, badge |
+| Announcement / event / launch | `PostAnnouncement` | headline, subheadline, date |
+| Product showcase reel | `ReelShowcase` | slides[], outroHeadline, ctaText |
+| Customer review reel | `ReelTestimonial` | quote, author, rating |
+| Tutorial / how-to reel | `ReelTutorial` | title, steps[] |
+| Hype / countdown reel | `ReelCountdown` | countFrom, revealText |
+
+**Create new template when:** no existing template matches, or the user wants a unique layout.
+See [references/creating-templates.md](references/creating-templates.md) for the creation workflow.
+
+### 3. Choose Theme
+
+| Brand feel | Theme | Colors | Fonts |
+|------------|-------|--------|-------|
+| Neutral / professional | `default` | Purple accent, light bg | Playfair + Inter |
+| Premium / high-end / gold | `luxury` | Gold/charcoal, dark bg | Playfair + Cormorant |
+| Tech / corporate / clean | `modern` | Blue/white | Poppins + Inter |
+| Bold / energetic / colorful | `vibrant` | Coral/teal/yellow, dark bg | Montserrat + Space Grotesk |
+| Clean / B&W / understated | `minimal` | Black/white only | Inter |
+
+**Custom theme needed when:** user provides specific brand colors/fonts. Create in `src/themes/`.
+
+### 4. Apply Constraints
+
+For 9:16 reels, ALWAYS:
+- Wrap critical content in `<SafeZone platform="instagram_reel">`
+- Use font sizes: titles 60-72px, body 36-44px
+- Keep text away from top 200px and bottom 400px
+
+For all formats:
+- Min font size: 24px
+- Use `translate3d()` + `willChange` for GPU perf
+- Max 15-20 simultaneous springs per scene
+- Italian text: always correct accents (qualita, piu, perche, E)
+
+## Pro Studio - Component Catalog
+
+Quick reference for all available building blocks. For detailed API and examples, see:
+- [references/animations.md](references/animations.md) - Springs, easings, entrance/exit/continuous
+- [references/components.md](references/components.md) - Text, effects, UI, layout, scenes
+
+### Animations (`src/lib/animations/`)
+```
+SPRING_PRESETS: hero | text | snappy | slow | cinematic | bouncy | smooth
+EASING_PRESETS: softEnter | softExit | smoothContinuous | textReveal | fade | elastic | sharp | standard
+Entrance: fadeIn, slideIn, scaleIn, blurIn, clipReveal
+Exit: fadeOut, slideOut, scaleOut
+Continuous: pulse, float, breathe, kenBurns, glowPulse
+```
+
+### Text (`src/lib/text/`)
+```
+SplitText     - Character stagger, 4 directions (up/down/left/right)
+SplitWords    - Word stagger with optional blur + scale
+Typewriter    - String slicing with blinking cursor
+WordHighlight - Animated highlighter background
+CountUp       - Number counter with spring
+```
+
+### Effects (`src/lib/effects/`)
+```
+FilmGrain     - SVG feTurbulence noise overlay
+Vignette      - Radial gradient darkening
+GlowText      - Pulsing text-shadow glow
+GradientBg    - Animated gradient angle rotation
+ParticleField - Floating particles with seeded randomness
+```
+
+### Transitions (`src/lib/transitions/`)
+```
+TRANSITION_PRESETS: elegantFade | slideRight | slideLeft | quickWipe
+clockRevealTransition(width, height) - Clock wipe factory
+FlashOverlay  - White flash between scenes
+GradientWipe  - Gradient sweep wipe
+```
+
+### UI Components (`src/components/ui/`)
+```
+Badge         - Tag/label (filled | outlined | ghost)
+Divider       - Animated growing line with glow
+CallToAction  - CTA button or text with spring entrance
+IconWrapper   - Animated icon container (lucide + react-icons)
+EmojiAnimated - Emoji with bounce entrance
+```
+
+### Layout (`src/components/layout/`)
+```
+SafeZone       - Platform-aware safe area wrapper
+CenterStack    - Centered flex column with gap
+FullBleedImage - Full-bleed image + gradient overlay
+```
+
+### Scenes (`src/components/scenes/`)
+```
+IntroScene    - Logo/text entrance with glow + film grain
+SlideScene    - Image with Ken Burns + text overlay
+TextOnlyScene - Gradient bg + headline + divider + subtext
+OutroScene    - Gradient bg + glow headline + CTA
+```
+
+## Pro Studio - Workflow: Render a Video
+
+```bash
+# Preview in Studio
+cd /mnt/c/PROGETTI/remotion-pro-studio && npm run dev
+
+# Render still
+npx remotion still <CompositionId> --props='{"theme":"luxury"}'
+
+# Render video
+npx remotion render <CompositionId> --props='{"theme":"modern","title":"Hello"}'
+
+# Test first 30 frames
+npx remotion render <CompositionId> --frames=0-30
+
+# Type check
+npx tsc --noEmit
+```
+
+Composition IDs follow the pattern: `TemplateName-format` for posts (e.g., `PostCarousel-4-5`) or just `TemplateName` for reels (e.g., `ReelShowcase`).
+
+## Pro Studio - References
+
+Detailed documentation for the Pro Studio components and workflows:
+
+- [references/animations.md](references/animations.md) - Springs, easings, entrance/exit/continuous animations API
+- [references/components.md](references/components.md) - Text, effects, UI, layout, and scene components API
+- [references/creating-templates.md](references/creating-templates.md) - Step-by-step guide to creating new templates
+- [references/team-workflow.md](references/team-workflow.md) - How the 4-agent team collaborates on video projects
+
+## Team di agenti
+
+4 agenti specializzati lavorano in parallelo sui diversi aspetti del video. Configurazione: `team/config.json`.
+
+| Agente | Ruolo | Responsabilita |
+|--------|-------|----------------|
+| **team-lead** | Coordinatore | Orchestrazione, code review, architettura, assegnazione task |
+| **animation-architect** | Motion designer | Springs, easings, entrance/exit, transizioni, performance |
+| **template-builder** | Sviluppatore | Template posts/reels, layout, scene system, Zod schemas |
+| **visual-effects** | VFX specialist | Effetti (grain, particles, glow), temi, text animations, icone |
+
+Per usare il team: `TeamCreate` con `team_name: "remotion-pro-studio"`.

@@ -1,9 +1,9 @@
-# Prompt di installazione - Remotion + TruantSkills
+# Prompt di installazione - Remotion Skill + Team
 
 Copia e incolla il prompt qui sotto direttamente in Claude Code.
-Claude si occuperà di tutto: installare le skill, configurare il team di agenti, creare il progetto, aggiungere tutti i pacchetti.
+Claude si occupera di tutto: installare la skill, configurare il team di agenti, creare il progetto, aggiungere tutti i pacchetti.
 
-**IMPORTANTE:** Prima di incollare il prompt, attiva la modalità Plan in Claude Code digitando `/plan` oppure premendo `Shift+Tab` per passare a Plan mode. Questo fa sì che Claude analizzi tutto il piano prima di eseguirlo, evitando errori.
+**IMPORTANTE:** Prima di incollare il prompt, attiva la modalita Plan in Claude Code digitando `/plan` oppure premendo `Shift+Tab` per passare a Plan mode. Questo fa si che Claude analizzi tutto il piano prima di eseguirlo, evitando errori.
 
 ---
 
@@ -20,21 +20,21 @@ Esegui queste operazioni in sequenza. Non chiedere conferma, procedi automaticam
 
 git clone https://github.com/brunotr88/TruantSkills.git /tmp/TruantSkills
 
-### STEP 2: Installa le due skill per Remotion
+### STEP 2: Installa la skill Remotion
 
-Copia entrambe le skill nella directory di Claude Code:
+Copia la skill completa nella directory di Claude Code:
 
 mkdir -p ~/.agents/skills
-
-Skill 1 - remotion-best-practices (37 regole fondamentali di Remotion):
 cp -r /tmp/TruantSkills/remotion-skill-powered-by-truant ~/.agents/skills/remotion-best-practices
 
-Skill 2 - remotion-pro-studio (template professionali, animazioni, effetti, temi):
-cp -r /tmp/TruantSkills/remotion-skill-powered-by-truant/pro-studio ~/.agents/skills/remotion-pro-studio
+La skill include:
+- 37 regole fondamentali di Remotion (rules/)
+- Template professionali, animazioni, effetti, temi (references/)
+- Checklist domande pre-video
+- Decision engine per formato/template/tema
 
-Verifica che entrambe le skill siano installate controllando che esistano:
+Verifica che la skill sia installata controllando che esista:
 - ~/.agents/skills/remotion-best-practices/SKILL.md
-- ~/.agents/skills/remotion-pro-studio/SKILL.md
 
 ### STEP 3: Installa il team di 4 agenti specializzati
 
@@ -58,7 +58,7 @@ rm -rf /tmp/TruantSkills
 
 ### STEP 5: Crea la cartella progetti e il progetto Remotion
 
-Crea la cartella C:\PROGETTI se non esiste già, poi crea dentro una sottocartella dedicata a Remotion:
+Crea la cartella C:\PROGETTI se non esiste gia, poi crea dentro una sottocartella dedicata a Remotion:
 
 mkdir -p /mnt/c/PROGETTI/remotion
 cd /mnt/c/PROGETTI/remotion
@@ -67,9 +67,9 @@ cd remotion-studio
 
 ### STEP 6: Installa TUTTI i pacchetti Remotion
 
-Installa l'ecosistema completo di pacchetti Remotion. Usa il package manager già presente nel progetto (controlla se esiste bun.lock, package-lock.json, yarn.lock o pnpm-lock.yaml).
+Installa l'ecosistema completo di pacchetti Remotion. Usa il package manager gia presente nel progetto (controlla se esiste bun.lock, package-lock.json, yarn.lock o pnpm-lock.yaml).
 
-Ecco la lista completa. Usa "npx remotion add" per i pacchetti @remotion/* (garantisce compatibilità versioni):
+Ecco la lista completa. Usa "npx remotion add" per i pacchetti @remotion/* (garantisce compatibilita versioni):
 
 npx remotion add @remotion/animated-emoji
 npx remotion add @remotion/animation-utils
@@ -97,20 +97,20 @@ Pacchetti third-party utili (installa con npm/bun/yarn):
 
 npm install zod lucide-react react-icons
 
-IMPORTANTE: Usa "npx remotion add" per i pacchetti @remotion/* (garantisce compatibilità versioni). Usa npm/bun/yarn install per i pacchetti non-remotion.
+IMPORTANTE: Usa "npx remotion add" per i pacchetti @remotion/* (garantisce compatibilita versioni). Usa npm/bun/yarn install per i pacchetti non-remotion.
 
 ### STEP 7: Verifica installazione completa
 
 1. Controlla che tutti i pacchetti siano nel package.json
-2. Conferma che le 2 skill sono installate
-3. Conferma che il team di 4 agenti è configurato
+2. Conferma che la skill e installata
+3. Conferma che il team di 4 agenti e configurato
 4. Avvia lo studio Remotion con "npm run dev" per verificare che tutto funzioni
 
 ### STEP 8: Riepilogo
 
-Mostra un riepilogo finale di cosa è stato installato:
+Mostra un riepilogo finale di cosa e stato installato:
 - Numero pacchetti Remotion installati nel progetto
-- Path delle 2 skill installate
+- Path della skill installata
 - Nome del team e i 4 agenti disponibili
 - Path del progetto: C:\PROGETTI\remotion\remotion-studio\
 - Comando per avviare lo studio: npm run dev (apre il browser con anteprima live)
@@ -127,25 +127,24 @@ Mostra un riepilogo finale di cosa è stato installato:
 2. Avvia Claude Code con `claude`
 3. Attiva **Plan mode**: digita `/plan` oppure premi `Shift+Tab` fino a vedere "Plan" nella barra in basso
 4. Incolla il prompt qui sopra e premi Invio
-5. Claude prima analizzerà il piano, poi ti chiederà conferma per eseguirlo
-6. Il progetto verrà creato in `C:\PROGETTI\remotion\remotion-studio\`
+5. Claude prima analizzerai il piano, poi ti chiedera conferma per eseguirlo
+6. Il progetto verra creato in `C:\PROGETTI\remotion\remotion-studio\`
 
 ## Note importanti
 
-- **`npx remotion add`** è il modo ufficiale per aggiungere pacchetti Remotion. Gestisce automaticamente la compatibilità delle versioni tra tutti i pacchetti.
+- **`npx remotion add`** e il modo ufficiale per aggiungere pacchetti Remotion. Gestisce automaticamente la compatibilita delle versioni tra tutti i pacchetti.
 - Se usi **bun** invece di npm, sostituisci `npx` con `bunx` in tutti i comandi.
-- Le skill si attivano **automaticamente** quando Claude Code rileva file `.tsx` che importano da `remotion`.
+- La skill si attiva **automaticamente** quando Claude Code rileva file `.tsx` che importano da `remotion`.
 - Per **aggiornare** Remotion in futuro: `npx remotion upgrade`
-- Per usare il **team di agenti**: dì a Claude "Usa TeamCreate con team_name remotion-pro-studio"
+- Per usare il **team di agenti**: di' a Claude "Usa TeamCreate con team_name remotion-pro-studio"
 
 ## Cosa viene installato - Riepilogo completo
 
-### 2 Skill di Claude Code
+### 1 Skill completa di Claude Code
 
-| Skill | Cosa fa |
+| Skill | Cosa include |
 |---|---|
-| `remotion-best-practices` | 37 regole fondamentali: animazioni, audio, video, font, safe zones, testi italiani, sottotitoli, transizioni, 3D, grafici, mappe |
-| `remotion-pro-studio` | Sistema di template professionali: 5 temi (default, luxury, modern, vibrant, minimal), componenti pronti (SplitText, Typewriter, FilmGrain, Vignette, ParticleField, SafeZone), 8 template (4 post + 4 reel) |
+| `remotion-best-practices` | **37 regole fondamentali** (animazioni, audio, video, font, safe zones, testi italiani, sottotitoli, transizioni, 3D, grafici, mappe) + **Pro Studio** (5 temi, componenti pronti, 8 template, decision engine, checklist domande pre-video) |
 
 ### 1 Team con 4 Agenti Specializzati
 

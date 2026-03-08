@@ -6,9 +6,9 @@ Raccolta di skill pronte all'uso per [Claude Code](https://docs.anthropic.com/en
 
 ## Available Skills / Skill Disponibili
 
-| Skill | Descrizione | Regole | Stato |
+| Skill | Descrizione | Contenuto | Stato |
 |---|---|---|---|
-| [remotion-skill-powered-by-truant](./remotion-skill-powered-by-truant/) | Best practices per Remotion - Crea video con React | 37 regole + 3 componenti | Disponibile |
+| [remotion-skill-powered-by-truant](./remotion-skill-powered-by-truant/) | Skill completa per Remotion - Crea video con React | 37 regole + template Pro Studio + 5 temi + team 4 agenti | Disponibile |
 
 ## Cosa sono le Skill di Claude Code?
 
