@@ -24,12 +24,14 @@ rm -rf /tmp/TruantSkills
 
 Verifica che la skill sia stata installata controllando che esista il file ~/.agents/skills/remotion-best-practices/SKILL.md
 
-### STEP 2: Crea un nuovo progetto Remotion
+### STEP 2: Crea la cartella progetti e il progetto Remotion
 
-Crea un nuovo progetto Remotion nella directory corrente:
+Crea la cartella C:\PROGETTI se non esiste già, poi crea dentro una sottocartella dedicata a Remotion:
 
-npx create-video@latest my-remotion-project
-cd my-remotion-project
+mkdir -p /mnt/c/PROGETTI/remotion
+cd /mnt/c/PROGETTI/remotion
+npx create-video@latest remotion-studio
+cd remotion-studio
 
 ### STEP 3: Installa TUTTI i pacchetti Remotion
 
@@ -83,11 +85,11 @@ Mostra un riepilogo finale di cosa è stato installato:
 
 ## Come usare questo prompt
 
-1. Apri un terminale
-2. Vai nella cartella dove vuoi creare il progetto (es. `cd ~/progetti`)
-3. Avvia Claude Code con `claude`
-4. Incolla il prompt qui sopra e premi Invio
-5. Claude farà tutto da solo in pochi minuti
+1. Apri un terminale (WSL su Windows, o terminale su Mac/Linux)
+2. Avvia Claude Code con `claude`
+3. Incolla il prompt qui sopra e premi Invio
+4. Claude farà tutto da solo in pochi minuti
+5. Il progetto verrà creato in `C:\PROGETTI\remotion\remotion-studio\`
 
 ## Note importanti
 
