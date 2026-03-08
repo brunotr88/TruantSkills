@@ -3,11 +3,14 @@
 Copia e incolla il prompt qui sotto direttamente in Claude Code.
 Claude si occuperà di tutto: installare la skill, creare il progetto, aggiungere tutti i pacchetti.
 
+**IMPORTANTE:** Prima di incollare il prompt, attiva la modalità Plan in Claude Code digitando `/plan` oppure premendo `Shift+Tab` per passare a Plan mode. Questo fa sì che Claude analizzi tutto il piano prima di eseguirlo, evitando errori.
+
 ---
 
 ## Prompt da copiare
 
 ```
+Avvia in plan mode: analizza prima tutto il piano, poi esegui.
 Utilizza sequential-thinking per pianificare ed eseguire questa installazione in modo ordinato.
 Crea un team di agenti dedicato per parallelizzare le operazioni dove possibile.
 
@@ -87,9 +90,10 @@ Mostra un riepilogo finale di cosa è stato installato:
 
 1. Apri un terminale (WSL su Windows, o terminale su Mac/Linux)
 2. Avvia Claude Code con `claude`
-3. Incolla il prompt qui sopra e premi Invio
-4. Claude farà tutto da solo in pochi minuti
-5. Il progetto verrà creato in `C:\PROGETTI\remotion\remotion-studio\`
+3. Attiva **Plan mode**: digita `/plan` oppure premi `Shift+Tab` fino a vedere "Plan" nella barra in basso
+4. Incolla il prompt qui sopra e premi Invio
+5. Claude prima analizzerà il piano, poi ti chiederà conferma per eseguirlo
+6. Il progetto verrà creato in `C:\PROGETTI\remotion\remotion-studio\`
 
 ## Note importanti
 
