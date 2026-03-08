@@ -20,10 +20,19 @@ Esegui queste operazioni in sequenza. Non chiedere conferma, procedi automaticam
 
 Esegui questo comando per abilitare il sistema di team con TeamCreate, TaskCreate e SendMessage:
 
-claude config set --global env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 1
+Leggi il file ~/.claude/settings.json (crealo se non esiste).
+Aggiungi la chiave "env" con il valore {"CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"} all'interno del JSON.
+Se il file ha gia altre chiavi (come "enabledPlugins"), aggiungi "env" come chiave aggiuntiva senza sovrascrivere le altre.
 
-IMPORTANTE: Dopo questo comando, riavvia Claude Code perche la variabile d'ambiente venga caricata.
-Se non puoi riavviare ora, il team funzionera comunque in modalita fallback con il tool Agent standard.
+Esempio di settings.json finale:
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  }
+}
+
+IMPORTANTE: Dopo la modifica, l'utente deve riavviare Claude Code perche la variabile venga caricata.
+Se non puo riavviare ora, il team funzionera comunque in modalita fallback con il tool Agent standard.
 
 ### STEP 2: Clona il repository TruantSkills
 
@@ -145,7 +154,7 @@ Mostra un riepilogo finale di cosa e stato installato:
 - Se usi **bun** invece di npm, sostituisci `npx` con `bunx` in tutti i comandi.
 - La skill si attiva **automaticamente** quando Claude Code rileva file `.tsx` che importano da `remotion`.
 - Per **aggiornare** Remotion in futuro: `npx remotion upgrade`
-- Il **team di agenti** si attiva automaticamente quando chiedi di creare un video (richiede `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`)
+- Il **team di agenti** si attiva automaticamente quando chiedi di creare un video (richiede `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` in settings.json)
 
 ## Cosa viene installato - Riepilogo completo
 
