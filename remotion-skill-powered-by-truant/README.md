@@ -42,7 +42,11 @@ remotion                        # Core - il cuore del framework
 
 Pacchetti esterni coperti: `mediabunny`, `mapbox-gl`, `@turf/turf`
 
-## Installazione passo-passo
+## Installazione veloce con Claude Code
+
+Se hai già Claude Code, puoi installare tutto con un copia-incolla! Apri il file [INSTALL-PROMPT.md](./INSTALL-PROMPT.md), copia il prompt e incollalo in Claude Code. Lui farà tutto da solo: installerà la skill, creerà il progetto Remotion, e aggiungerà tutti i 21 pacchetti.
+
+## Installazione passo-passo (manuale)
 
 ### Prerequisiti
 
