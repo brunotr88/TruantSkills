@@ -18,18 +18,37 @@ metadata:
 
 Use this skill whenever you are dealing with Remotion code to obtain the domain-specific knowledge.
 
-## IMPORTANT: Team Activation (MANDATORY for video creation)
+## IMPORTANT: Parallel Agent Workflow (MANDATORY for video creation)
 
-**When the user requests to create a video**, you MUST start the specialized agent team BEFORE writing any code:
+**When the user requests to create a video**, you MUST use the **Agent tool** to spawn specialized subagents that work in parallel. Do NOT write all the code yourself sequentially.
 
-1. Use `TeamCreate` with `team_name: "remotion-pro-studio"` to spawn the 4-agent team
-2. The **team-lead** will coordinate the work, assigning tasks to:
-   - **animation-architect** for springs, easings, transitions
-   - **template-builder** for template structure, layouts, scenes
-   - **visual-effects** for effects, themes, text animations
-3. Only after the team is active, proceed with the Decision Engine below
+### How to spawn agents
 
-This is a **blocking requirement**: do not generate video code alone when the team is available. The team produces higher quality, more consistent output by parallelizing the work.
+Use the `Agent` tool (available in every Claude Code installation) to launch **parallel subagents**. Send a single message with multiple Agent tool calls:
+
+```
+Agent 1 - "Build template structure"
+  prompt: "You are the template-builder for a Remotion video project at [project path].
+           Create the composition structure, scenes, layout, and Root.tsx registry for: [describe video].
+           Use Zod schemas for props. Follow the Remotion skill rules for safe zones and font sizes."
+
+Agent 2 - "Create animations and transitions"
+  prompt: "You are the animation-architect for a Remotion video project at [project path].
+           Implement springs, easings, entrance/exit animations, and scene transitions for: [describe video].
+           Use SPRING_PRESETS and EASING_PRESETS. Max 15-20 simultaneous springs per scene."
+
+Agent 3 - "Build visual effects and theme"
+  prompt: "You are the visual-effects specialist for a Remotion video project at [project path].
+           Implement the theme (colors, fonts), text animations, effects (grain, vignette, particles),
+           and UI components (badges, CTA, icons) for: [describe video]."
+```
+
+### Rules
+- **Always launch agents in parallel** (multiple Agent calls in one message) for independent tasks
+- Each agent gets the full context: video requirements, format, theme, asset paths
+- After agents complete, **review and integrate** their outputs, resolving any conflicts
+- For simple videos (single scene, no effects), you may skip agents and code directly
+- The `team/config.json` file in this skill contains reference prompts for each agent role
 
 ## Asset Acquisition (AUTHORIZED)
 
@@ -510,4 +529,4 @@ Detailed documentation for the Pro Studio components and workflows:
 | **template-builder** | Sviluppatore | Template posts/reels, layout, scene system, Zod schemas |
 | **visual-effects** | VFX specialist | Effetti (grain, particles, glow), temi, text animations, icone |
 
-Per usare il team: `TeamCreate` con `team_name: "remotion-pro-studio"`.
+Il team viene attivato automaticamente tramite il tool **Agent** quando si crea un video (vedi sezione "Parallel Agent Workflow" sopra).

@@ -116,7 +116,7 @@ Mostra un riepilogo finale di cosa e stato installato:
 - Comando per avviare lo studio: npm run dev (apre il browser con anteprima live)
 - Comando per esportare un video: npx remotion render <CompositionId> output.mp4
 - Comando per aggiornare Remotion: npx remotion upgrade
-- Come usare il team: "Usa TeamCreate con team_name remotion-pro-studio"
+- Il team di agenti si attiva automaticamente quando chiedi di creare un video
 ```
 
 ---
@@ -136,7 +136,7 @@ Mostra un riepilogo finale di cosa e stato installato:
 - Se usi **bun** invece di npm, sostituisci `npx` con `bunx` in tutti i comandi.
 - La skill si attiva **automaticamente** quando Claude Code rileva file `.tsx` che importano da `remotion`.
 - Per **aggiornare** Remotion in futuro: `npx remotion upgrade`
-- Per usare il **team di agenti**: di' a Claude "Usa TeamCreate con team_name remotion-pro-studio"
+- Il **team di agenti** si attiva automaticamente quando chiedi di creare un video
 
 ## Cosa viene installato - Riepilogo completo
 
