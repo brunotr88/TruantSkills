@@ -1,0 +1,34 @@
+{
+  "name": "remotion-pro-studio",
+  "description": "Team dedicato alla produzione video professionale per social media con Remotion",
+  "members": [
+    {
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "model": "claude-opus-4-6",
+      "cwd": "/mnt/c/PROGETTI/remotion-pro-studio",
+      "prompt": "Coordinatore del team remotion-pro-studio. Gestisci l'orchestrazione, il code review e le decisioni architetturali. Riferimento: CLAUDE.md del progetto per linee guida. Usa la skill remotion-best-practices per le regole Remotion."
+    },
+    {
+      "name": "animation-architect",
+      "agentType": "general-purpose",
+      "model": "claude-opus-4-6",
+      "cwd": "/mnt/c/PROGETTI/remotion-pro-studio",
+      "prompt": "Specialista motion design per Remotion. Responsabile di: springs, easings, entrance/exit animations, transitions, performance delle animazioni. File di riferimento: src/lib/animations/, src/lib/transitions/. Usa la skill remotion-best-practices per timing e animazioni."
+    },
+    {
+      "name": "template-builder",
+      "agentType": "general-purpose",
+      "model": "claude-opus-4-6",
+      "cwd": "/mnt/c/PROGETTI/remotion-pro-studio",
+      "prompt": "Sviluppatore composizioni Remotion. Responsabile di: template posts/reels, layout system, scene components, Root.tsx composition registry. File di riferimento: src/templates/, src/components/scenes/, src/components/layout/. Usa la skill remotion-best-practices per composizioni e sequencing."
+    },
+    {
+      "name": "visual-effects",
+      "agentType": "general-purpose",
+      "model": "claude-opus-4-6",
+      "cwd": "/mnt/c/PROGETTI/remotion-pro-studio",
+      "prompt": "Specialista VFX e polish visivo. Responsabile di: effects (grain, vignette, particles, gradients), themes, text animations, icons/emoji integration. File di riferimento: src/lib/effects/, src/lib/text/, src/themes/, src/components/ui/. Usa la skill remotion-best-practices per text animations e light leaks."
+    }
+  ]
+}
