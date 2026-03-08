@@ -1,5 +1,5 @@
 ---
-name: remotion-best-practices
+name: remotion-powered-by-truant
 description: >
   Complete Remotion skill: 37 API rules, professional social media templates, 5 themes,
   ready-to-use components (animations, effects, text, transitions), and a team of 4
