@@ -31,6 +31,52 @@ Use this skill whenever you are dealing with Remotion code to obtain the domain-
 
 This is a **blocking requirement**: do not generate video code alone when the team is available. The team produces higher quality, more consistent output by parallelizing the work.
 
+## Asset Acquisition (AUTHORIZED)
+
+You are **authorized and encouraged** to download images and media assets needed for video projects. This includes:
+
+### From user-provided websites
+When the user provides a URL (e.g., "crea un video promozionale per www.esempio.it"):
+1. **Scrape the website** using Playwright or WebFetch to identify product images, logos, hero images, banners
+2. **Download relevant images** to the project's `public/assets/` folder using `curl` or `wget`
+3. **Rename files** descriptively (e.g., `product-hero.jpg`, `logo-main.png`, not `img_2847.jpg`)
+4. **Optimize**: convert to WebP if needed, resize to appropriate dimensions for the video format
+5. Use `staticFile()` in Remotion to reference downloaded assets
+
+### From stock photo sites (when no source provided)
+When the user needs images but has no source:
+1. **Search** for relevant stock images on Unsplash, Pexels, or Pixabay (free, no attribution required for commercial use)
+2. **Download** via their APIs or direct URLs to `public/assets/`
+3. **Inform the user** which images were selected and their source
+
+### Download workflow
+```bash
+# Create assets folder
+mkdir -p public/assets
+
+# Download from website
+curl -o public/assets/hero.jpg "https://www.example.com/path/to/image.jpg"
+
+# Download from Unsplash (example)
+curl -o public/assets/background.jpg "https://images.unsplash.com/photo-xxx?w=1920&q=80"
+```
+
+### In Remotion code
+```tsx
+import { staticFile, Img } from "remotion";
+
+// Reference downloaded asset
+<Img src={staticFile("assets/hero.jpg")} />
+```
+
+### Rules
+- Always save to `public/assets/` (Remotion's static file directory)
+- Prefer WebP/JPEG for photos, PNG for logos/graphics with transparency
+- For reels (1080x1920): download images at minimum 1080px wide
+- For posts (1080x810): download images at minimum 1080px wide
+- **Never hotlink** - always download locally (avoids network issues during render)
+- If a website blocks scraping, inform the user and ask for manual asset upload
+
 ---
 
 ## Domande da fare all'utente prima di creare il video
