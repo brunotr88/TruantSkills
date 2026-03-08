@@ -20,7 +20,7 @@ Esegui queste operazioni in sequenza. Non chiedere conferma, procedi automaticam
 
 Esegui questo comando per abilitare il sistema di team con TeamCreate, TaskCreate e SendMessage:
 
-claude config set -g env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 1
+claude config set --global env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 1
 
 IMPORTANTE: Dopo questo comando, riavvia Claude Code perche la variabile d'ambiente venga caricata.
 Se non puoi riavviare ora, il team funzionera comunque in modalita fallback con il tool Agent standard.

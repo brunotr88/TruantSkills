@@ -105,7 +105,7 @@ Se usi Windows, ti consiglio di lavorare con WSL (Windows Subsystem for Linux). 
 
 3. **Abilita Agent Teams** (consigliato - attiva il sistema di team collaborativo):
    ```bash
-   claude config set -g env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 1
+   claude config set --global env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 1
    ```
    Poi riavvia Claude Code.
 

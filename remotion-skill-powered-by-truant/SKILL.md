@@ -35,7 +35,7 @@ If the `TeamCreate` tool is available, use it to spawn the full coordinated team
 
 **How to enable Agent Teams** (one-time setup):
 ```bash
-claude config set -g env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 1
+claude config set --global env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 1
 ```
 Then restart Claude Code. This unlocks `TeamCreate`, `TaskCreate`, `SendMessage` and the full team coordination system.
 
@@ -548,4 +548,4 @@ Detailed documentation for the Pro Studio components and workflows:
 | **visual-effects** | VFX specialist | Effetti (grain, particles, glow), temi, text animations, icone |
 
 Il team viene attivato automaticamente quando si crea un video (vedi sezione "Team Activation" sopra).
-Per la migliore esperienza, abilita Agent Teams: `claude config set -g env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 1`
+Per la migliore esperienza, abilita Agent Teams: `claude config set --global env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 1`
