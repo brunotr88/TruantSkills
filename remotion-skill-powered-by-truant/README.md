@@ -1,177 +1,181 @@
-# Remotion Best Practices - Skill for Claude Code
+# Remotion Best Practices - Skill per Claude Code
+
+Una skill completa per [Claude Code](https://docs.anthropic.com/en/docs/claude-code) con **37 regole specializzate** per [Remotion](https://remotion.dev) - il framework per creare video con React.
 
 A comprehensive Claude Code skill with **37 specialized rules** for [Remotion](https://remotion.dev) - the framework for creating videos programmatically in React.
 
-## What This Skill Does
+---
 
-When activated, Claude Code gains deep knowledge of Remotion's APIs, patterns, and best practices, including:
+## Cosa fa questa skill?
 
-- **Instagram Reels safe zones** - mandatory margins for 9:16 content so text/logos aren't covered by UI overlays
-- **Social media font sizing** - minimum readable sizes for posts (1080x810) and reels (1080x1920)
-- **Italian text verification** - automatic spell-check for accented vowels and apostrophes (mandatory for Italian content)
-- **37 topic-specific rules** covering animations, audio, video, captions, transitions, 3D, charts, maps, and more
-- **3 ready-to-use component examples** (bar chart, typewriter effect, word highlight)
+Quando la attivi, Claude Code diventa un esperto di Remotion. Sa tutto su:
 
-## Remotion Packages Referenced
+- **Safe zone per Instagram Reels** - i margini obbligatori per il formato 9:16, così testo e loghi non vengono coperti dai pulsanti di Instagram
+- **Dimensioni font per social media** - le dimensioni minime leggibili per post (1080x810) e reel (1080x1920)
+- **Verifica testi italiani** - controllo automatico degli accenti (è, à, ù, ì, ò) e degli apostrofi nei testi
+- **37 regole** che coprono animazioni, audio, video, sottotitoli, transizioni, 3D, grafici, mappe e molto altro
+- **3 componenti di esempio** pronti all'uso (grafico a barre, effetto macchina da scrivere, evidenziazione parole)
 
-This skill covers the following Remotion ecosystem packages:
+## Pacchetti Remotion coperti
+
+Questa skill copre tutto l'ecosistema Remotion:
 
 ```
-remotion                        # Core framework
-@remotion/cli                   # CLI tools (studio, render)
-@remotion/media                 # Video and Audio components
-@remotion/google-fonts          # Google Fonts integration
-@remotion/fonts                 # Local font loading
-@remotion/transitions           # Fade, slide, wipe, flip, clock-wipe
-@remotion/captions              # TikTok-style captions and subtitles
-@remotion/media-utils           # Audio visualization, waveforms
-@remotion/layout-utils          # Text measurement, fit text
-@remotion/three                 # Three.js / React Three Fiber
-@remotion/lottie                # Lottie animations
-@remotion/gif                   # GIF / APNG / AVIF / WebP support
-@remotion/paths                 # SVG path animation (line charts)
-@remotion/light-leaks           # WebGL light leak effects
-@remotion/install-whisper-cpp   # Audio transcription (Whisper)
-@remotion/zod-types             # Zod parameter types (color picker)
-@remotion/sfx                   # Sound effects
+remotion                        # Core - il cuore del framework
+@remotion/cli                   # CLI (studio per anteprima, render per esportare)
+@remotion/media                 # Componenti Video e Audio
+@remotion/google-fonts          # Google Fonts (caricamento automatico)
+@remotion/fonts                 # Font locali (woff2, ttf, ecc.)
+@remotion/transitions           # Transizioni: fade, slide, wipe, flip, clock-wipe
+@remotion/captions              # Sottotitoli stile TikTok con highlight parole
+@remotion/media-utils           # Visualizzazione audio (barre, waveform)
+@remotion/layout-utils          # Misura testo e adattamento automatico
+@remotion/three                 # Three.js / React Three Fiber (3D)
+@remotion/lottie                # Animazioni Lottie
+@remotion/gif                   # GIF / APNG / AVIF / WebP animate
+@remotion/paths                 # Animazione tracciati SVG (grafici a linee)
+@remotion/light-leaks           # Effetti luce WebGL (transizioni)
+@remotion/install-whisper-cpp   # Trascrizione audio con Whisper
+@remotion/zod-types             # Parametri con Zod (color picker, ecc.)
+@remotion/sfx                   # Effetti sonori pronti all'uso
 ```
 
-Third-party packages also covered: `mediabunny`, `mapbox-gl`, `@turf/turf`
+Pacchetti esterni coperti: `mediabunny`, `mapbox-gl`, `@turf/turf`
 
-## Installation
+## Installazione passo-passo
 
-### Prerequisites
+### Prerequisiti
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed and configured
-- A Remotion project (or intent to create one)
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installato e funzionante
+- Un progetto Remotion (o la voglia di crearne uno!)
 
-### Windows + WSL Setup (if needed)
+### Se sei su Windows con WSL (consigliato)
 
-If you're on Windows with WSL (recommended for Remotion development):
+Se usi Windows, ti consiglio di lavorare con WSL (Windows Subsystem for Linux). Ecco come:
 
-1. **Install WSL** (if not already):
+1. **Installa WSL** (apri PowerShell come amministratore):
    ```powershell
    wsl --install
    ```
 
-2. **Install Node.js in WSL**:
+2. **Installa Node.js dentro WSL**:
    ```bash
    curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
    sudo apt-get install -y nodejs
    ```
 
-3. **Install Claude Code globally**:
+3. **Installa Claude Code**:
    ```bash
    npm install -g @anthropic-ai/claude-code
    ```
 
-### Install the Skill
+### Installare la skill
 
-1. **Clone this repository** (or download the skill folder):
+1. **Clona questo repository**:
    ```bash
    git clone https://github.com/brunotr88/TruantSkills.git
    ```
 
-2. **Copy the skill to your Claude Code skills directory**:
+2. **Copia la skill nella directory di Claude Code**:
    ```bash
    mkdir -p ~/.agents/skills
    cp -r TruantSkills/remotion-skill-powered-by-truant ~/.agents/skills/remotion-best-practices
    ```
 
-3. **Verify installation** - the skill should appear when you run Claude Code in a Remotion project.
+3. **Fatto!** La skill si attiverà automaticamente quando lavori su un progetto Remotion.
 
-### Create a New Remotion Project
-
-If you don't have a Remotion project yet:
+### Creare un nuovo progetto Remotion (se non ne hai uno)
 
 ```bash
-# Using npm
-npx create-video@latest my-video
+# Con npm
+npx create-video@latest il-mio-video
 
-# Using bun
-bunx create-video@latest my-video
+# Con bun (più veloce)
+bunx create-video@latest il-mio-video
 
-# Navigate and start
-cd my-video
-npm start  # or bun start
+# Entra nella cartella e avvia
+cd il-mio-video
+npm start
 ```
 
-## Usage
+Si aprirà il browser con lo studio di Remotion dove puoi vedere l'anteprima dei tuoi video in tempo reale.
 
-Once installed, the skill activates automatically when Claude Code detects Remotion code. You can also invoke it directly:
+## Come usarla
 
-### Example Prompts
+Una volta installata, la skill si attiva da sola quando Claude Code rileva codice Remotion. Puoi anche invocarla direttamente con questi prompt di esempio:
+
+### Prompt di esempio
 
 ```
-Create a 9:16 Instagram Reel with animated text that respects safe zones
+Crea un Reel Instagram 9:16 con testo animato che rispetti le safe zone
 
-Build a bar chart animation that reveals bars with spring physics
+Costruisci un grafico a barre animato con effetto spring
 
-Add TikTok-style captions to my video with word highlighting
+Aggiungi sottotitoli stile TikTok con evidenziazione della parola corrente
 
-Create a map animation showing a route from Rome to Milan using Mapbox
+Crea un'animazione mappa che mostra il percorso da Roma a Milano con Mapbox
 
-Add a typewriter effect with a blinking cursor and pause between sentences
+Aggiungi un effetto macchina da scrivere con cursore lampeggiante
 
-Generate audio visualization bars that react to the music beat
+Genera barre di visualizzazione audio che reagiscono alla musica
 
-Create a transition sequence with fade and light leak effects
+Crea una sequenza di transizioni con fade e light leak
 ```
 
-## File Structure
+## Struttura dei file
 
 ```
 remotion-skill-powered-by-truant/
-├── README.md              # This file
-├── SKILL.md               # Skill entry point (loaded by Claude Code)
+├── README.md              # Questo file
+├── SKILL.md               # Entry point della skill (caricato da Claude Code)
 └── rules/
-    ├── 3d.md              # Three.js and React Three Fiber
-    ├── animations.md      # Fundamental animation patterns
-    ├── assets.md          # Importing images, videos, audio, fonts
-    ├── audio.md           # Audio: trim, volume, speed, pitch, loop
-    ├── audio-visualization.md  # Spectrum bars, waveforms, bass-reactive
-    ├── calculate-metadata.md   # Dynamic duration, dimensions, props
-    ├── can-decode.md      # Video decode validation (Mediabunny)
-    ├── charts.md          # Bar, pie, line, stock charts
-    ├── compositions.md    # Compositions, stills, folders, props
-    ├── display-captions.md     # TikTok-style caption display
-    ├── extract-frames.md  # Frame extraction from videos
-    ├── ffmpeg.md          # FFmpeg/FFprobe operations
-    ├── fonts.md           # Google Fonts and local fonts
-    ├── get-audio-duration.md   # Audio duration (Mediabunny)
-    ├── get-video-dimensions.md # Video dimensions (Mediabunny)
-    ├── get-video-duration.md   # Video duration (Mediabunny)
-    ├── gifs.md            # GIF, APNG, AVIF, WebP display
-    ├── images.md          # Image embedding with <Img>
-    ├── import-srt-captions.md  # SRT subtitle import
-    ├── light-leaks.md     # WebGL light leak overlays
-    ├── lottie.md          # Lottie animations
-    ├── maps.md            # Mapbox map animations
-    ├── measuring-dom-nodes.md  # DOM element measurement
-    ├── measuring-text.md  # Text measurement and fitting
-    ├── parameters.md      # Zod schema parameters
-    ├── sequencing.md      # Sequence and Series patterns
-    ├── sfx.md             # Sound effects
-    ├── subtitles.md       # Caption/subtitle system overview
+    ├── 3d.md              # Three.js e React Three Fiber
+    ├── animations.md      # Pattern fondamentali di animazione
+    ├── assets.md          # Import di immagini, video, audio, font
+    ├── audio.md           # Audio: trim, volume, velocità, pitch, loop
+    ├── audio-visualization.md  # Barre spettro, waveform, effetti bass
+    ├── calculate-metadata.md   # Durata e dimensioni dinamiche
+    ├── can-decode.md      # Validazione decodifica video
+    ├── charts.md          # Grafici: barre, torta, linee, azioni
+    ├── compositions.md    # Composizioni, still, cartelle, props
+    ├── display-captions.md     # Visualizzazione sottotitoli TikTok
+    ├── extract-frames.md  # Estrazione frame da video
+    ├── ffmpeg.md          # Operazioni FFmpeg/FFprobe
+    ├── fonts.md           # Google Fonts e font locali
+    ├── get-audio-duration.md   # Durata audio
+    ├── get-video-dimensions.md # Dimensioni video
+    ├── get-video-duration.md   # Durata video
+    ├── gifs.md            # GIF, APNG, AVIF, WebP animate
+    ├── images.md          # Immagini con <Img>
+    ├── import-srt-captions.md  # Import sottotitoli SRT
+    ├── light-leaks.md     # Effetti luce WebGL
+    ├── lottie.md          # Animazioni Lottie
+    ├── maps.md            # Animazioni mappa con Mapbox
+    ├── measuring-dom-nodes.md  # Misura elementi DOM
+    ├── measuring-text.md  # Misura e adattamento testo
+    ├── parameters.md      # Parametri Zod
+    ├── sequencing.md      # Pattern Sequence e Series
+    ├── sfx.md             # Effetti sonori
+    ├── subtitles.md       # Sistema sottotitoli/captions
     ├── tailwind.md        # TailwindCSS in Remotion
-    ├── text-animations.md # Typewriter, word highlight
-    ├── timing.md          # Interpolation, spring, easing
-    ├── transcribe-captions.md  # Whisper.cpp transcription
-    ├── transitions.md     # TransitionSeries, overlays
-    ├── transparent-videos.md   # ProRes/WebM transparency
-    ├── trimming.md        # Trim beginning/end of animations
-    ├── videos.md          # Video: trim, volume, speed, loop
-    ├── voiceover.md       # ElevenLabs TTS voiceover
+    ├── text-animations.md # Macchina da scrivere, highlight
+    ├── timing.md          # Interpolazione, spring, easing
+    ├── transcribe-captions.md  # Trascrizione con Whisper
+    ├── transitions.md     # TransitionSeries, overlay
+    ├── transparent-videos.md   # Video trasparenti (ProRes/WebM)
+    ├── trimming.md        # Taglio inizio/fine animazioni
+    ├── videos.md          # Video: trim, volume, velocità, loop
+    ├── voiceover.md       # Voiceover con ElevenLabs TTS
     └── assets/
-        ├── charts-bar-chart.tsx            # Bar chart component
-        ├── text-animations-typewriter.tsx   # Typewriter effect
-        └── text-animations-word-highlight.tsx  # Word highlight effect
+        ├── charts-bar-chart.tsx            # Componente grafico a barre
+        ├── text-animations-typewriter.tsx   # Effetto macchina da scrivere
+        └── text-animations-word-highlight.tsx  # Effetto evidenziazione parole
 ```
 
 ## License
 
-[MIT](../LICENSE)
+[MIT](../LICENSE) - Usa, modifica e condividi liberamente.
 
 ---
 
-*Skill created by [Bruno Truant](https://isipc.com) - Part of the [TruantSkills](https://github.com/brunotr88/TruantSkills) collection.*
+*Skill creata da [Bruno Truant](https://isipc.com) - Parte della collezione [TruantSkills](https://github.com/brunotr88/TruantSkills).*

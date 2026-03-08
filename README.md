@@ -2,41 +2,45 @@
 
 Curated collection of production-ready [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skills by **Bruno Truant**.
 
-## Available Skills
+Raccolta di skill pronte all'uso per [Claude Code](https://docs.anthropic.com/en/docs/claude-code), create da **Bruno Truant**.
 
-| Skill | Description | Rules | Status |
+## Available Skills / Skill Disponibili
+
+| Skill | Descrizione | Regole | Stato |
 |---|---|---|---|
-| [remotion-skill-powered-by-truant](./remotion-skill-powered-by-truant/) | Best practices for Remotion - Video creation in React | 37 rules + 3 assets | Available |
+| [remotion-skill-powered-by-truant](./remotion-skill-powered-by-truant/) | Best practices per Remotion - Crea video con React | 37 regole + 3 componenti | Disponibile |
 
-## What are Claude Code Skills?
+## Cosa sono le Skill di Claude Code?
 
-Skills are reusable knowledge modules that extend Claude Code's capabilities with domain-specific expertise. When activated, they provide Claude with specialized rules, patterns, and code examples for a particular technology or workflow.
+Le skill sono moduli di conoscenza riutilizzabili che potenziano Claude Code con competenze specifiche su una tecnologia. Quando attivi una skill, Claude ottiene regole, pattern e esempi di codice pronti all'uso, come se avesse un esperto al suo fianco.
 
-## Installation
+In pratica: installi la skill, e da quel momento Claude sa tutto su quella tecnologia.
 
-Each skill folder contains its own README with detailed installation instructions.
+## Installazione rapida
 
-**Quick start** (for any skill):
+Per installare una qualsiasi skill di questa collezione:
 
 ```bash
-# Clone the repo
+# 1. Clona il repository
 git clone https://github.com/brunotr88/TruantSkills.git
 
-# Copy the skill folder to your Claude Code skills directory
-cp -r TruantSkills/<skill-folder> ~/.agents/skills/
+# 2. Copia la cartella della skill nella directory di Claude Code
+cp -r TruantSkills/<cartella-skill> ~/.agents/skills/
 ```
 
-## About the Author
+Ogni cartella skill ha il suo README con istruzioni dettagliate passo-passo.
 
-**Bruno Truant** - IT Security Consultant & Author based in Treviso, Italy.
+## About the Author / Chi sono
 
-- **[ISIPC](https://isipc.com)** - IT Assistance, Data Recovery, Security
-- **[Social Genius](https://socialgenius.it)** - Marketing, Funnels, Meta/Google Ads
-- **Books:**
+**Bruno Truant** - IT Security Consultant & Autore, Treviso, Italia.
+
+- **[ISIPC](https://isipc.com)** - Assistenza IT, Data Recovery, Sicurezza
+- **[Social Genius](https://socialgenius.it)** - Marketing, Funnel, Meta/Google Ads
+- **Libri:**
   - *OSINT e Social Engineering*
   - *Claude Code per Tutti*
   - *Come ho spiegato l'AI a mia nonna*
 
 ## License
 
-[MIT](./LICENSE)
+[MIT](./LICENSE) - Usa, modifica e condividi liberamente.
